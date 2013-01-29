@@ -6,13 +6,12 @@
 require(shiny)
 require(synapseClient)
 
+# Load 3 anonymized patient samples
 patEnt <- loadEntity('syn1661926')
-patientA <- patEnt$objects$patientList$patientA
-patientB <- patEnt$objects$patientList$patientB
-patientC <- patEnt$objects$patientList$patientC
 
 shinyServer(function(input, output){
   chooseSample <- reactive(function(){
-    patientSample <- patEnt$objects$patientList$patientA
+    whichPatient <- input$variable
+    patientSample <- patEnt$objects$patientList[[whichPatient]]
   })
 })

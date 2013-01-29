@@ -35,7 +35,7 @@ shinyUI(pageWithSidebar(
     h4('PI3K Activity Score'),
     verbatimTextOutput('prediction'),
     
-    h4("Observations"),
+    h4("PI3k Graphical Landscape (Selected Patient on far right)"),
     plotOutput("view")
   )
 ))

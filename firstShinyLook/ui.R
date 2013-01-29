@@ -11,13 +11,17 @@ shinyUI(pageWithSidebar(
   headerPanel('Patient Array Queue'),
   
   sidebarPanel(
-    selectInput('variable', 'Patient in Queue:',
-                list('No Patient Selected' = NULL,
-                     'Patient A' = 1,
-                     'Patient B' = 2,
-                     'Patient C' = 3))
-  ),
-  
-  mainPanel()
-  
-))
+    selectInput('dataset', 'Choose a Queued Patient Sample:',
+                choices = c('Patient_A', 'Patient_B', 'Patient_C')),
+    helpText('Helpful text'),
+    submitButton('Update View')
+    ),
+    
+    # Display output
+    mainPanel(
+      h3('Test Output'),
+      verbatimTextOutput('summary'),
+      h4('More Test Output'),
+      tableOutput('summary')
+    )
+  ))

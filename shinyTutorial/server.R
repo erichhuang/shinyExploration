@@ -29,12 +29,6 @@ shinyServer(function(input, output) {
            "Patient C" = patientC)
   })
   
-  # Generate a summary of the dataset
-  output$summary <- reactivePrint(function() {
-    dataset <- datasetInput()
-    summary(dataset)
-  })
-  
   # Generate PI3K activity score
   output$prediction <- reactivePrint(function() {
     dataset <- datasetInput()

@@ -19,8 +19,9 @@ shinyUI(pageWithSidebar(
     
     helpText("Note: select the patient sample from the queue",
              "then click 'Update View'",
-             "to obtain a summary of the patient's sample",
-             "and a prediction of their PI3K Pathway Activity"),
+             "to obtain a prediction of their PI3K Pathway Activity",
+             "and where the patient's prediction plots",
+             "in the 'landscape' of TCGA breast cancer patients"),
     
     submitButton("Update View")
   ),
@@ -29,13 +30,10 @@ shinyUI(pageWithSidebar(
   # number of observations. Note the use of the h4 function to provide
   # an additional header above each output section.
   mainPanel(
-    h4("Summary"),
-    verbatimTextOutput("summary"),
-    
     h4('PI3K Activity Score'),
     verbatimTextOutput('prediction'),
     
-    h4("PI3k Graphical Landscape (Selected Patient on far right)"),
+    h4("PI3K Graphical Landscape (Selected Patient on far right)"),
     plotOutput("view")
   )
 ))

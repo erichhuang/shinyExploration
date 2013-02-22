@@ -53,7 +53,7 @@ shinyServer(function(input, output) {
       geom_jitter(aes(colour = as.factor(mutation), size = 4)) +
       ggtitle('Population Predicted PI3K Activity Scores\n') +
       geom_hline(yintercept = 0.3, linetype = 'dotted', colour = 'red') +
-      scale_x_discrete(limits = c('wt', 'pik3ca', 'pten', 'pik3r1', 'akt', 'mult', 'newSample')) +
+      scale_x_discrete(limits = c('wt', 'pik3ca', 'pten', 'pik3r1', 'akt', 'mult', 'selectedPatient')) +
       xlab('\nmutation') +
       ylab('pi3k activity score\n') +
       scale_size(guide = 'none') +

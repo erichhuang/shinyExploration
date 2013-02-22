@@ -6,13 +6,7 @@ shinyUI(pageWithSidebar(
   # Application title.
   headerPanel("Web Application for PI3K Pathway Activity Prediction in Breast Cancer"),
   
-  # Sidebar with controls to select a dataset and specify the number
-  # of observations to view. The helpText function is also used to 
-  # include clarifying text. Most notably, the inclusion of a 
-  # submitButton defers the rendering of output until the user 
-  # explicitly clicks the button (rather than doing it immediately
-  # when inputs change). This is useful if the computations required
-  # to render output are inordinately time-consuming.
+  # Sidebar panel
   sidebarPanel(
     selectInput("dataset", "Choose a patient:", 
                 choices = c("Patient A", "Patient B", "Patient C")),
@@ -26,9 +20,14 @@ shinyUI(pageWithSidebar(
     submitButton("Update View")
   ),
   
-  # Show a summary of the dataset and an HTML table with the requested
-  # number of observations. Note the use of the h4 function to provide
-  # an additional header above each output section.
+  # Additional sidebar
+  sidebarPanel(
+    helpText("The model for PI3K Pathway Activity is run in real",
+             "time once the queued patient's data is submitted")
+    ),
+  
+  # Show a the prediction and show where the patient plots against the TCGA 
+  # breast cancer cohort
   mainPanel(
     h4('PI3K Activity Score'),
     verbatimTextOutput('prediction'),

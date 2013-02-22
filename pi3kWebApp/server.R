@@ -41,7 +41,7 @@ shinyServer(function(input, output) {
     dataset <- datasetInput()
     samplePrediction <- predict(pi3kModel, dataset, type = 'prob')
     foo <- samplePrediction[2]
-    dfRow <- data.frame('newSample', 
+    dfRow <- data.frame('selectedPatient', 
                         foo, 
                         stringsAsFactors = FALSE)
     

@@ -7,6 +7,8 @@ shinyUI(pageWithSidebar(
   headerPanel("Web Application for PI3K Pathway Activity Prediction in Breast Cancer"),
   
   # Sidebar panel
+  # Selector for a queued patient sample with a button to submit it for 
+  # analysis. Help text
   sidebarPanel(
     selectInput("dataset", "Choose a patient:", 
                 choices = c("Patient A", "Patient B", "Patient C")),
@@ -15,17 +17,15 @@ shinyUI(pageWithSidebar(
              "then click 'Update View'",
              "to obtain a prediction of their PI3K Pathway Activity",
              "and where the patient's prediction plots",
-             "in the 'landscape' of TCGA breast cancer patients"),
+             "in the 'landscape' of TCGA breast cancer patients.",
+             "Each patient prediction is calculated and plotted",
+             "in real time."),
     
     submitButton("Update View")
   ),
   
-  # Additional sidebar
-  sidebarPanel(
-    helpText("The model for PI3K Pathway Activity is run in real",
-             "time once the queued patient's data is submitted")
-    ),
-  
+
+  # Main panel
   # Show a the prediction and show where the patient plots against the TCGA 
   # breast cancer cohort
   mainPanel(

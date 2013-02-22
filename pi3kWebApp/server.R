@@ -33,7 +33,7 @@ shinyServer(function(input, output) {
   output$prediction <- reactivePrint(function() {
     dataset <- datasetInput()
     samplePrediction <- predict(pi3kModel, dataset, type = 'prob')
-    samplePrediction[2]
+    paste("The patient's estimated PI3K Activity Score is ", samplePrediction[2], sep = '')
   })
   
   # Show a graphical respresentation of the PI3K activity landscape
@@ -56,7 +56,9 @@ shinyServer(function(input, output) {
       scale_x_discrete(limits = c('wt', 'pik3ca', 'pten', 'pik3r1', 'akt', 'mult', 'newSample')) +
       xlab('\nmutation') +
       ylab('pi3k activity score\n') +
-      scale_size(guide = 'none')
+      scale_size(guide = 'none') +
+      annotate('text', x = 2.5, y = 0.7, label = 'TCGA Breast CA Patients') +
+      annotate('text', x = 7, y = 0.7, label = 'Selected Pt.')
     
     show(fullValidBoxPlot)
   })
